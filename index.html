@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="">
+  <meta property="og:title" content="Efficient Autoregressive Shape Generation via Octree-Based Adaptive Tokenization"/>
+  <meta property="og:description" content=""/>
+  <meta property="og:url" content="https://oat.github.io"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+
+  <meta name="twitter:title" content="Efficient Autoregressive Shape Generation via Octree-Based Adaptive Tokenization">
+  <meta name="twitter:description" content="">
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
+  <meta name="twitter:image" content="">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>Efficient Autoregressive Shape Generation via Octree-Based Adaptive Tokenization</title>
+  <link rel="icon" type="image/x-icon" href="rsc/oat.png">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="static/css/styles.css">
+  <link rel="stylesheet" href="static/css/bootstrap.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+  <script type="module" src="static/js/model-viewer.min.js"></script>
+
+  <style>
+    model-viewer {
+        width: 100%;
+        /* height: 300px; */
+        height: auto;
+        aspect-ratio: 1/1;
+        background-color: #f0f0f0;
+    }
+    body {
+        margin: 0;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Efficient Autoregressive Shape Generation via Octree-Based Adaptive Tokenization</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+                <a href="https://dunbar12138.github.io/" target="_blank">Kangle Deng</a><sup>1,2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.dgp.toronto.edu/~hsuehtil/" target="_blank">Hsueh-Ti Derek Liu</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="" target="_blank">Yiheng Zhu</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="" target="_blank">Xiaoxia Sun</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="" target="_blank">Chong Shang</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="" target="_blank">Kiran S. Bhat</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.cs.cmu.edu/~deva/" target="_blank">Deva Ramanan</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.cs.cmu.edu/~junyanz/" target="_blank">Jun-Yan Zhu</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://graphics.stanford.edu/~maneesh/" target="_blank">Maneesh Agrawala</a><sup>1,3</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://tinghuiz.github.io/" target="_blank">Tinghui Zhou</a><sup>1</sup>
+              </span>
+            </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <span class="author-block"><sup >1</sup>Roblox</span> &nbsp&nbsp
+                    <span class="author-block"><sup>2</sup>Carnegie Mellon University</span> &nbsp&nbsp
+                    <span class="author-block"><sup>3</sup>Stanford University</span>
+                    <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
+                  </div>
+
+                  <div class="column has-text-centered">
+                  <!-- ArXiv abstract Link -->
+                  <span class="link-block">
+                    <a href="" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>ArXiv</span>
+                    </a>
+                  </span>
+
+                  <!-- Github link -->
+                  <span class="link-block">
+                    <a href="" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code (Coming Soon)</span>
+                  </a>
+                </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser video-->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./rsc/figures/teaser_v2.jpg" style="width: 100%;" />
+      <div class="content has-text-justified">
+        <p>
+          We propose an Octree-based Adaptive shape Tokenization (<span style="font-weight:900">OAT</span>) that dynamically allocates tokens based on shape complexity. Our approach achieves <span style="font-weight:900"> better</span> reconstruction quality with <span style="font-weight:900"> fewer</span> tokens on average (439 compared to 512 on the full test set) by intelligently distributing more tokens to complex shapes while saving on simpler ones.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End teaser video -->
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Many 3D generative models rely on variational autoencoders (VAEs) to learn compact shape representations. 
+            However, existing methods encode all shapes into a fixed-size token, disregarding the inherent variations in scale and complexity across 3D data. This leads to inefficient latent representations that can compromise downstream generation.
+            We address this challenge by introducing Octree-based Adaptive Tokenization, a novel framework that adjusts the dimension of latent representations according to shape complexity. Our approach constructs an adaptive octree structure guided by a quadric-error-based subdivision criterion and allocates a shape latent vector to each octree cell using a query-based transformer. Building upon this tokenization, we develop an octree-based autoregressive generative model that effectively leverages these variable-sized representations in shape generation.
+            Extensive experiments demonstrate that our approach reduces token counts by 50% compared to fixed-size methods while maintaining comparable visual quality.  
+            When using a similar token length, our method produces significantly higher-quality shapes. 
+            When incorporated with our downstream generative model, our method creates more detailed and diverse 3D content than existing approaches.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Generation Results</h2>
+          <div class="row">
+            <div class="col-3" style="margin: auto;">
+              <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <p style="font-size: 16px; font-weight: bold; margin-top: 5px;">
+                    Input Text Prompt
+                </p>
+              </div>
+            </div>
+
+            <div class="col-3" style="margin: auto;">
+              <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <p style="font-size: 16px; font-weight: bold; margin-top: 5px;">
+                    Generated Shape
+                </p>
+              </div>
+            </div>
+
+            <div class="col-3" style="margin: auto;">
+              <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <p style="font-size: 16px; font-weight: bold; margin-top: 5px;">
+                    Input Text Prompt
+                </p>
+              </div>
+            </div>
+
+            <div class="col-3" style="margin: auto;">
+              <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <p style="font-size: 16px; font-weight: bold; margin-top: 5px;">
+                    Generated Shape
+                </p>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-3" style="margin: auto;">
+                <!-- <div class="row text-center"> -->
+                <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; margin-right: 10%; margin-left: 10%;">
+                        "A pirate ship with cannons"
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-3" style="margin: auto;">
+              <!-- <div class="row text-center"> -->
+              <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                  <model-viewer exposure="0.5" camera-controls="" enable-pan="" shadow-intensity="2" camera-orbit="270deg 75deg 150%" max-camera-orbit="auto auto 100%" src="rsc/meshes/1726074279_af9ff2b12a5070b7028fd4a5bcc29c01.glb" ar-status="not-presenting">
+                  </model-viewer>
+              </div>
+            </div>
+
+            <div class="col-3" style="margin: auto;">
+                <!-- <div class="row text-center"> -->
+                <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; margin-right: 10%; margin-left: 10%;">
+                        "A pair of noise-cancelling headphones"
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-3" style="margin: auto;">
+              <!-- <div class="row text-center"> -->
+              <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                  <model-viewer exposure="0.5" camera-controls="" enable-pan="" shadow-intensity="2" camera-orbit="180deg 75deg 150%" max-camera-orbit="auto auto 100%" src="rsc/meshes/1725894841_a87fcd37093ce34f7672897c0cd35cfa.glb" ar-status="not-presenting">
+                  </model-viewer>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-3" style="margin: auto;">
+                <!-- <div class="row text-center"> -->
+                <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; margin-right: 10%; margin-left: 10%;">
+                        "A 3D model of a wizard hat"
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-3" style="margin: auto;">
+              <!-- <div class="row text-center"> -->
+              <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                  <model-viewer exposure="0.5" camera-controls="" enable-pan="" shadow-intensity="2" camera-orbit="270deg 75deg 150%" max-camera-orbit="auto auto 100%" src="rsc/meshes/1725895002_335c77038496bc6263821caa2939b924.glb" ar-status="not-presenting">
+                  </model-viewer>
+              </div>
+            </div>
+            <div class="col-3" style="margin: auto;">
+                <!-- <div class="row text-center"> -->
+                <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; margin-right: 10%; margin-left: 10%;">
+                        "A fluffy cute dog"
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-3" style="margin: auto;">
+              <!-- <div class="row text-center"> -->
+              <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                  <model-viewer exposure="0.5" camera-controls="" enable-pan="" shadow-intensity="2" camera-orbit="270deg 75deg 150%" max-camera-orbit="auto auto 100%" src="rsc/meshes/1725898861_30f6efd176077d3e4f706251df9da9bd.glb" ar-status="not-presenting">
+                  </model-viewer>
+              </div>
+            </div>
+            
+            </div>
+            
+            
+            <div class="row">
+            <div class="col-3" style="margin: auto;">
+                <!-- <div class="row text-center"> -->
+                <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; margin-right: 10%; margin-left: 10%;">
+                        "A dog warrior"
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-3" style="margin: auto;">
+                <!-- <div class="row text-center"> -->
+                <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <model-viewer exposure="0.5" camera-controls="" enable-pan="" shadow-intensity="2" camera-orbit="180deg 75deg 150%" max-camera-orbit="auto auto 100%" src="rsc/meshes/1725895297_cadfa137cc2c7ffb59a28fdb34dd1278.glb" ar-status="not-presenting">
+                    </model-viewer>
+                </div>
+            </div>
+            
+            <div class="col-3" style="margin: auto;">
+                <!-- <div class="row text-center"> -->
+                <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; margin-right: 10%; margin-left: 10%;">
+                        "A 3D model of a pigeon"
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-3" style="margin: auto;">
+                <!-- <div class="row text-center"> -->
+                <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <model-viewer exposure="0.5" camera-controls="" enable-pan="" shadow-intensity="2" camera-orbit="270deg 75deg 150%" max-camera-orbit="auto auto 100%" src="rsc/meshes/1725899390_4cfec5109ff9fefa482eb8c823a9de56.glb" ar-status="not-presenting">
+                    </model-viewer>
+                </div>
+            </div>
+            </div>
+            
+            
+            <div class="row">
+            
+            <div class="col-3" style="margin: auto;">
+                <!-- <div class="row text-center"> -->
+                <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; margin-right: 10%; margin-left: 10%;">
+                        "A wooden ship with mast"
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-3" style="margin: auto;">
+                <!-- <div class="row text-center"> -->
+                <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <model-viewer exposure="0.5" camera-controls="" enable-pan="" shadow-intensity="2" camera-orbit="270deg 75deg 150%" max-camera-orbit="auto auto 100%" src="rsc/meshes/1725903236_9ed8825858ec60ca435e1edad4b23984.glb" ar-status="not-presenting">
+                    </model-viewer>
+                </div>
+            </div>
+            <div class="col-3" style="margin: auto;">
+                <!-- <div class="row text-center"> -->
+                <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; margin-right: 10%; margin-left: 10%;">
+                        "A 3D model of a space rocket"
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-3" style="margin: auto;">
+                <!-- <div class="row text-center"> -->
+                <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <model-viewer exposure="0.5" camera-controls="" enable-pan="" shadow-intensity="2" camera-orbit="180deg 75deg 150%" max-camera-orbit="auto auto 100%" src="rsc/meshes/1725906187_d8258c8d5cdb2218414b7c4ada6af844.glb" ar-status="not-presenting">
+                    </model-viewer>
+                </div>
+            </div>
+            
+            </div>
+            
+            
+            <div class="row">
+            <div class="col-3" style="margin: auto;">
+                <!-- <div class="row text-center"> -->
+                <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; margin-right: 10%; margin-left: 10%;">
+                        "A 3D model of a locomotive"
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-3" style="margin: auto;">
+                <!-- <div class="row text-center"> -->
+                <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <model-viewer exposure="0.5" camera-controls="" enable-pan="" shadow-intensity="2" camera-orbit="270deg 75deg 150%" max-camera-orbit="auto auto 100%" src="rsc/meshes/1725907919_ad1943a9fd6d3d7ee1e6af41a5b0d3e7.glb" ar-status="not-presenting">
+                    </model-viewer>
+                </div>
+            </div>
+            
+            <div class="col-3" style="margin: auto;">
+                <!-- <div class="row text-center"> -->
+                <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; margin-right: 10%; margin-left: 10%;">
+                        "A 3D model of a car"
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-3" style="margin: auto;">
+                <!-- <div class="row text-center"> -->
+                <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <model-viewer exposure="0.5" camera-controls="" enable-pan="" shadow-intensity="2" camera-orbit="270deg 75deg 150%" max-camera-orbit="auto auto 100%" src="rsc/meshes/1725907940_e6d96502596d7e7887b76646c5f615d9.glb" ar-status="not-presenting">
+                    </model-viewer>
+                </div>
+            </div>
+            </div>
+            
+            
+            <div class="row">
+            <div class="col-3" style="margin: auto;">
+                <!-- <div class="row text-center"> -->
+                <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; margin-right: 10%; margin-left: 10%;">
+                        "The imperial state crown of England"
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-3" style="margin: auto;">
+                <!-- <div class="row text-center"> -->
+                <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <model-viewer exposure="0.5" camera-controls="" enable-pan="" shadow-intensity="2" camera-orbit="180deg 75deg 150%" max-camera-orbit="auto auto 100%" src="rsc/meshes/1725913548_408e69f65e4ddaf550331c22567de3ca.glb" ar-status="not-presenting">
+                    </model-viewer>
+                </div>
+            </div>
+            
+            <div class="col-3" style="margin: auto;">
+                <!-- <div class="row text-center"> -->
+                <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <p style="font-family: Chalkduster; font-size: 16px; margin-top: 5px; margin-right: 10%; margin-left: 10%;">
+                        "An intricate ring with a gem"
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-3" style="margin: auto;">
+                <!-- <div class="row text-center"> -->
+                <div class="row text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <model-viewer exposure="0.5" camera-controls="" enable-pan="" shadow-intensity="2" camera-orbit="180deg 75deg 150%" max-camera-orbit="auto auto 100%" src="rsc/meshes/1725915821_b19a5b3cb0c29bb8f1abc5b2132ae1b8.glb" ar-status="not-presenting">
+                    </model-viewer>
+                </div>
+            </div>
+          </div>
+  
+  
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Adaptive Octree</h2>
+            <div style="text-align: center;">
+              <img src="./rsc/figures/octree_comparison.jpg"  style="max-width: 55%; height: auto;">
+            </div>
+            <div class="content has-text-justified">
+            <p>
+              Traditional octree construction subdivides each octant based on whether the octant contains any mesh element. This construction always subdivides to the maximum depth (set to 6 in this example), leading to a similar amount of nodes for simple (top) and complex (middle) shapes.
+              In contrast, our approach terminates subdivision when the local geometry is simple (e.g., a plane), leading to an adaptive octree that better reflects the shape complexity. We show that our adaptive octree construction can reduce the number of nodes by 50% compared to the traditional octree construction. 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-small is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Method Pipeline</h2>
+            <div style="text-align: center;">
+              <img src="./rsc/figures/overview.png"  style="max-width: 100%; height: auto;">
+            </div>
+            <div class="content has-text-justified">
+            <p>
+              (a) <span style="font-weight:900"> Adaptive Shape Tokenization.</span>
+              Given an input mesh with surface point samples, we partition 3D space into a sparse octree that adapts to the local geometric complexity of the surface. We then use a Perceiver-based transformer to encode the shape into a tree of latent codes, where a child node need encode only the (quantized) residual latent relative to its parent. Latents can then be decoded into an occupancy field from which a mesh can be extracted. 
+              (b) <span style="font-weight:900"> Autoregressive Shape Generation.</span> We define an autoregressive model for generating a tree of quantized shape tokens given a textual prompt, following a coarse-to-fine breadth-first search traversal. Similar to variable-length generation of text via end-of-sentence tokens, we make use of structural tokens to generate variable-size tree structures.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content">
+          <h2 class="title is-3">Reconstruction Results</h2>
+            <div style="text-align: center;">
+              <img src="./rsc/figures/comparison_IoU.png"  style="max-width: 55%; height: auto;">
+            </div>
+            <div class="content has-text-justified">
+            <p>
+              We plot reconstruction quality (IoU) against latent size in both discrete (left) and continuous (right) scenarios. We use KiloBytes (KB) for continuous latent representations for a fair comparison.
+              Our method consistently outperforms baseline approaches at equivalent latent sizes and achieves comparable reconstruction quality with approximately 50% smaller latent representations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{deng2024oat,
+    title={Efficient Autoregressive Shape Generation via Octree-Based Adaptive Tokenization},
+    author={Deng, Kangle and Liu, Hsueh-Ti Derek and Zhu, Yiheng and Sun, Xiaoxia and Shang, Chong and Bhat, S. Kiran, and Ramanan, Deva and Zhu, Jun-Yan  and Agrawala, Maneesh and Zhou, Tinghui},
+    journal={arXiv preprint},
+    year={2025},
+}</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+<section class="section">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Related Work</h2>
+    <p>
+      <ul>
+          <li>Biao Zhang, Jiapeng Tang, Matthias Niessner, Peter Wonka.
+              <a href="https://1zb.github.io/3DShape2VecSet/"> 3DShape2VecSet: A 3D Shape Representation for Neural Fields and Generative Diffusion Models. </a>
+              ACM Transactions on Graphics (Proc. SIGGRAPH), 2023.
+          </li>
+
+          <li>Weiyu Li, Jiarui Liu, Rui Chen, Yixun Liang, Xuelin Chen, Ping Tan, Xiaoxiao Long. <a href="https://craftsman3d.github.io/">
+            CraftsMan: High-fidelity Mesh Generation with 3D Native Generation and Interactive Geometry Refiner.</a> ArXiv 2024.</li>
+      </ul>
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Acknowledgements</h2>
+    <p>
+      We thank Akash Garg, Daiqing Li, Alexander Weiss, Alejandro Peláez,
+      Sheng-Yu Wang, Gaurav Parmer, Ruihan Gao, Nupur Kumari, and Maxwell Jones for their discussion and help. This work was done when Kangle
+      was an intern at Roblox. The project is partly supported by Roblox. Jun-Yan Zhu is partly supported by the Packard Fellowship. Kangle Deng is supported by the Microsoft Research PhD Fellowship.
+    </p>
+  </div>
+</section>
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This project page is inspired by <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+            This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
